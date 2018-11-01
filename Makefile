@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall -I/usr/include/libev -O2
-LDFLAGS = -g  -lev -pthread -O2
+LDFLAGS = -g  -lev -pthread -O2 -lm
 
 all: mpclient mpserver .locale
 	$(shell sh ./make-locale.sh)
@@ -8,10 +8,10 @@ all: mpclient mpserver .locale
 .locale: locale/zh_CN.po
 
 mpclient: client.o net.o mptunnel.o rbtree.o
-	$(CC) $^  -o mpclient $(LDFLAGS)
+	$(CC) $^  -static -o mpclient $(LDFLAGS)
 
 mpserver: server.c mptunnel.o net.o rbtree.o
-	$(CC) $^  -o mpserver $(LDFLAGS)
+	$(CC) $^  -static -o mpserver $(LDFLAGS)
 
 
 SOURCE = $(wildcard *.c)
