@@ -35,3 +35,5 @@ callgrind*
 *valgrind*
 *core*
 *.mo
+
+mptunnel.pot
