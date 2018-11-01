@@ -42,7 +42,7 @@
 #define LOGI(FMT, ...) LOG(LOG_INFO, FMT, ##__VA_ARGS__)
 
 #define LOG(level, FMT, ...) do {    \
-    static struct tm *tmp = NULL; static time_t t1, t2 = (time_t)NULL; struct timeval tv; char timestr[128] = {0}; char ms[4] = {0};  \
+    static struct tm *tmp = NULL; static time_t t1, t2 = (time_t)NULL; struct timeval tv; char timestr[128] = {0}; char ms[16] = {0};  \
     if ((t1 = time(NULL)) != t2) {t2 = t1; tmp = localtime(&t2); }     \
     gettimeofday(&tv, NULL);  \
     if (tmp == NULL) {  \
